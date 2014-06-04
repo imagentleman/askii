@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Askii - Comparte, califica, descubre</title>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900' rel='stylesheet' type='text/css'>
+  <style>
+    * {
+      margin: 0;
+      transition: all .4s;
+    }
+
+    html {
+      font-size: 10px;
+      font-family: 'Source Sans Pro', sans-serif;
+      color: #191919;
+    }
+
+    .bar {
+      padding: .8rem 2rem;
+      box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+    }
+
+      .text-logo {
+        font-size: 2.8rem;
+        font-weight: bold;
+        color: #191919;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .text-logo:hover {
+        opacity: 0.618;
+      }
+
+      .nuevo {
+        float: right;
+        line-height: 36px;
+        font-size: 14px;
+        text-decoration: none;
+        color: #0093CC;
+      }
+
+      .nuevo:hover {
+        opacity: 0.618;
+      }
+
+    #content {
+      width: 61.8%;
+      margin: 2rem auto;
+    }
+
+      .questions {
+        padding: 1rem 0;
+      }
+
+        .q {
+          border-bottom: .1rem solid #EBEBEB;
+          margin: 3rem 0 10rem 0;
+          padding: 1rem 0;
+        }
+
+          .q h2 {
+            font-size: 3.8rem;
+            line-height: 1em;
+            font-weight: 900;
+          }
+
+          .meta {
+            padding: 1.5rem 0 1rem 0;
+          }
+
+            .meta a {
+              color: #888;
+              text-decoration: none;
+            }
+
+            .meta a:hover {
+              opacity: 0.618;
+            }
+
+            .meta span {
+              padding: .4rem 1rem .4rem 0;
+              font-size: 1.3rem;
+            }
+
+            .rating {
+              font-weight: bold;
+            }
+
+          .q p {
+            font-size: 1.6rem;
+            color: #444;
+            padding-top: .2rem;
+            margin: 1.5rem 0;
+          }
+  </style>
+</head>
+<body>
+
+<nav class="bar">
+  <a href="/" class="text-logo">Askii</a>
+  <a href="/nuevo" class="nuevo">+ Nuevo</a>
+</nav>
+
+<div id="content">
+  <section class="questions">
+    {% for s in stories %}
+    <article class="q">
+      <h2>{{s.title}}</h2>
+      <div class="meta">
+        <span class="rating">{{s.score}} ({{s.votes}} votos)</span><span><a href="#">{{s.author}}</a>  en  <a href="#">{{s.tag}}</a></span>
+        <span class="date">{{s.date}}</span>
+
+      </div>
+      <p>{{s.desc}}</p>
+    </article>
+    {% endfor %}
+    <article class="q">
+      <h2>Instrucciones</h2>
+      <p>Askii es una herramienta de colaboración y administración de innovación. Permite compartir, calificar y descubrir ideas.</p>
+      <p>Envía una idea o propuesta, un vínculo o una noticia. Cualquier cosa que quieras compartir con tus compañeros de trabajo y que creas relevante. Entre todos podrán calificarlas (de 1 a 5) directamente desde el correo y la aplicación se encargará de destacar los mejores envíos.</p>
+      <p>Después de enviarlo, te llegará un correo que te permitirá calificarlo (a ti y al resto de remitentes), tanto desde el inbox, como dentro del cuerpo del correo.</p>
+      <p>Para comenzar haz clic en "+ Nuevo" en la parte superior derecha.</p>
+    </article>
+  </section>
+</div>
+
+<script src="/js/jquery-2.1.1.min.js"></script>

@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <script type="application/ld+json">
+    {
+      "@context":               "http://schema.org",
+      "@type":                  "Product",
+      "name":                   "{{title}}",
+      "action": {
+        "@type":                "ReviewAction",
+        "review": {
+          "@type":              "Review",
+          "reviewRating": {
+            "@type":            "Rating",
+            "bestRating":       "5",
+            "worstRating":      "1"
+          }
+        },
+        "handler": {
+          "@type":              "HttpActionHandler",
+          "url":                "http://askiiapp.appspot.com/?id={{id}}",
+          "encoding": {
+            "url":              "http://schema.org/Encoding/UrlEncoded"
+          },
+          "method":             "http://schema.org/HttpRequestMethod/POST",
+          "requiredProperty": {
+            "@type":            "Property",
+            "name":             "review.reviewRating.ratingValue"
+          },
+          "optionalProperty": {
+            "@type":            "Property",
+            "name":             "review.reviewBody"
+          }
+        }
+      }
+    }
+    </script>
+    <p>Hola, te invitamos a calificar y comentar esto:</p>
+    <h1>{{title}}</h1>
+    <p>
+      {{desc}}
+    </p>
+    <p><a href="http://askii.appspot.com">Askii</a></p>
+  </body>
+</html>
